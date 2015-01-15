@@ -1,0 +1,235 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+
+
+    <head>
+        <link rel="SHORTCUT ICON" href="/campusweb/theme/default/image/favicon.ico">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="Thu, 01 Dec 1994 16:00:00 GMT">
+
+        
+        
+    
+         
+
+        <title></title>
+        <link rel=stylesheet href="/campusweb/theme/default/StyleSheet.css" type="text/css">
+        <script type="text/javascript" src="/campusweb/js/ScriptColor.js"></script>
+        <script type="text/javascript" src="/campusweb/js/Script.js"></script>
+        
+    </head>
+    
+    
+
+<script language="JavaScript">
+<!--
+function load() {
+    dispMsg('err_0', '');
+    dispMsg('err_1', '');
+    dispMsg('err_2', '');
+    selectCombo('jikanwariShozokuCode', '');
+    selectCombo('gakkiKubunCode', '');
+    selectCombo('nenji', '');
+    selectCombo('yobi', '');
+    selectCombo('jigen', '');
+}
+function dispMsg(id, flg) {
+    var obj = document.getElementById(id);
+    if(flg == '1'){
+        obj.style.display = '';
+    } else {
+        obj.style.display = 'none';
+    }
+    return;
+}
+function selectCombo(id, val) {
+    var obj = document.getElementById(id);
+    if(val != null){
+        for (var i=0;i<obj.options.length;i++) {
+            var option = obj.options[i];
+            if(option.value == val){
+                option.selected = true;
+                return;
+            }
+        }
+    }
+    return;
+}
+//-->
+</script>
+
+<body onLoad="load();">
+
+
+<table cellspacing="0" cellpadding="0" border="0" width="100%" class="title">
+    <tbody>
+        <tr>
+            <td height="23">
+                <img hspace="5" border="0" align="left" src="/campusweb/theme/default/image/func_refer4.gif">
+                <img hspace="0" height="1" border="0" align="left" width="5" vspace="0" src="/campusweb/theme/default/image/space.gif">シラバス参照／条件入力
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p><b>以下の条件で検索できます</b></p>
+<p>
+    <span id="err_0" class="error" style="display:none">
+        入力された条件に該当する時間割は存在しません。&#12288;検索条件を変更してください。
+    </span>
+</p>
+<p>
+<form id="jikanwariKeywordForm" name="KeywordForm" method="post" action="/campusweb/campussquare.do">
+    <input type="hidden" name="_eventId" value="byKeyword">
+    <input type="hidden" name="_flowExecutionKey" value="_*****">
+    <input type="hidden" name="s_no" value="0">
+    <table border="0" cellspacing="0" cellpadding="5">
+        <tr>
+            <td width="120" style="letter-spacing : 1.5em;"><span class="item-key">年度</span></td>
+            <td>：
+                <input id="nendo" name="nendo" type="text" value="2014" size="6" maxlength="4"/>
+                
+                <span id="err_1" class="error" style="display:none">年度は必須です</span>
+            </td>
+        </tr>
+        <tr>
+          <td><span class="item-key">開講所属</span></td>
+          <td>：
+            <select id="jikanwariShozokuCode" name="jikanwariShozokuCode">
+                <option value="21">情報理工学部</option>
+                <option value="22">情報理工学部夜間主コース　先端工学基礎課程</option>
+                <option value="23">情報理工学研究科（博士前期課程）</option>
+                <option value="24">情報理工学研究科（博士後期課程）</option>
+                <option value="11">電気通信学部</option>
+                <option value="12">電気通信学部　夜間主コース</option>
+                <option value="13">電気通信学研究科（博士前期課程）</option>
+                <option value="14">電気通信学研究科（博士後期課程）</option>
+                <option value="15">情報システム学研究科（博士前期課程）</option>
+                <option value="16">情報システム学研究科（博士後期課程）</option>
+            </select>
+            <span id="err_2" class="error" style="display:none">開講所属は必須です</span>
+          </td>
+        </tr>
+        <tr>
+            <td style="letter-spacing : 1.5em;"><span class="item-normal">学期</span></td>
+            <td>：
+                <select id="gakkiKubunCode" name="gakkiKubunCode">
+                    <option value="">指示なし</option>
+                    <option value="1">前学期</option>
+                    <option value="2">後学期</option>                        
+                </select>　※通年科目については「前学期」参照
+            </td>
+        </tr>
+        <tr>
+            <td><span class="item-normal">教員名</span></td>
+            <td>：
+                <input id="kyokanNm" name="kyokanNm" type="text" value="" size="20" maxlength="40"/>　※中間一致
+            </td>
+        </tr>
+        <tr>
+            <td style="letter-spacing : 1.5em;"><span class="item-normal">科目</span></td>
+            <td>：
+                <input id="kamokuNm" name="kamokuNm" type="text" value="" size="20" maxlength="20"/>　※中間一致。科目名を入力します。
+            </td>
+        </tr>
+        <tr>
+            <td><span class="item-normal">キーワード</span></td>
+            <td>：
+                <input id="keyword" name="keyword" type="text" value="" size="20" maxlength="20"/>　※中間一致
+                
+            </td>
+        </tr>
+        <tr>
+            <td style="letter-spacing : 1.5em;"><span class="item-normal">学年</span></td>
+            <td>：
+                <select id="nenji" name="nenji">
+                    <option value="" selected="selected">指示なし</option>
+                    <option value="1">1年</option>
+                    <option value="2">2年</option>
+                    <option value="3">3年</option>
+                    <option value="4">4年</option>
+                    <option value="5">5年</option>
+                    <option value="6">6年</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="letter-spacing : 1.5em;"><span class="item-normal">曜日</span></td>
+            <td>：
+                <select id="yobi" name="yobi">
+                    <option value="" selected="selected">指示なし</option>
+                    <option value="1">月曜日</option>
+                    <option value="2">火曜日</option>
+                    <option value="3">水曜日</option>
+                    <option value="4">木曜日</option>
+                    <option value="5">金曜日</option>
+                    <option value="6">土曜日</option>
+                    <option value="9">その他</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td style="letter-spacing : 1.5em;"><span class="item-normal">時限</span></td>
+            <td>：
+                <select id="jigen" name="jigen">
+                    <option value="" selected="selected">指示なし</option>
+                    <option value="1">1限</option>
+                    <option value="2">2限</option>
+                    <option value="3">3限</option>
+                    <option value="4">4限</option>
+                    <option value="5">5限</option>
+                    <option value="6">6限</option>
+                    <option value="7">7限</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p><input type="button" value=" 検索開始 " onclick="noInput('KeywordForm')">
+                   <input type="reset" value=" ク リ ア ">
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a href="/syllabus/old-syllabus/index.htm" target="_brank">１６～２１年度開講のシラバスはこちら</a>
+            </td>
+        </tr>
+    </table>
+</form>
+
+
+
+    
+     <p>
+         <table border="0" cellspacing="0" cellpadding="0" width="100%" class="title-footer">
+             <tr>
+                 <td align="right">
+                                           
+                     <img src="/campusweb/theme/default/image/footer_copyright.gif">
+                 </td>
+             </tr>
+         </table>
+     </p>
+
+
+</body>
+</html>
